@@ -1,0 +1,42 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <!--
+      fullName: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(80)]],
+      email: [null],
+      document: [null],
+      birthDate: [null],
+      password: [null, [Validators.pattern("/^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%&*()+\-.,;?^.,;?><:{}[\]])[\w!@#$%&*()+\-.,;?^.,;?><:{}[\]]{6,22}$/"), Validators.required, Validators.minLength(6), Validators.maxLength(22)]],
+      confirmPassword: [null],
+    -->
+
+    <!-- Name Field -->
+    <div class="field-group">
+        <label for="fullName">Nome Completo</label>
+        <input type="text"id="fullName" placeholder="Nome completo" formControlName="fullName">
+    </div>
+
+    <!-- Email Field -->
+    <div class="field-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Email" formControlName="email">
+    </div>
+
+    <!-- Birth Date -->
+    <div class="field-group">
+        <label for="birthDate">Data de nascimento</label>
+        <input type="date" id="email" formControlName="birthDate">
+    </div>
+
+    <!-- Password Field -->
+    <div class="field-group">
+        <label for="password"></label>
+        <input type="text" id="password" placeholder="Senha" formControlName="password">
+    </div>
+
+    <!-- Confirm Password Field -->
+    <div class="field-group">
+        <label for="confirmPassword"></label>
+        <input type="text" id="confirmPassword" placeholder="Confirmação de senha" formControlName="confirmPassword">
+    </div>
+
+    <input type="button" value="Cadastrar" (click)="register()">
+</form>
