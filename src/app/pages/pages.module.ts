@@ -3,14 +3,16 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
-import { UserRegistrationComponent } from './users/user-registration/user-registration.component';
-import { SharedModule } from 'src/app/shared/shared/shared.module';
-
-
+import { SharedModule } from 'src/app/shared/shared.module';
+import { HomeComponent } from 'src/app/pages/home/home.component';
+import { SignUpComponent } from './user-registration/sign-up.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
-    UserRegistrationComponent
+    HomeComponent,
+    SignUpComponent,
+    LoginComponent
   ],
   imports: [
     CommonModule,
@@ -20,7 +22,9 @@ import { SharedModule } from 'src/app/shared/shared/shared.module';
     SharedModule
   ],
   exports: [
-    UserRegistrationComponent
+    HomeComponent,
+    SignUpComponent,
+    LoginComponent
   ]
 })
 export class PagesModule { }
