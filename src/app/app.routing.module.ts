@@ -1,15 +1,20 @@
 import { NgModule } from "@angular/core";
-import { RouterModule, Routes } from "@angular/router";
+import { RouterModule } from "@angular/router";
 
 import { HomeComponent } from "./pages/home/home.component";
-import { UserRegistrationComponent } from "./pages/users/user-registration/user-registration.component";
+import { LoginComponent } from "./pages/login/login.component";
+import { SignUpComponent } from "./pages/user-registration/sign-up.component";
 
 @NgModule({
     imports: [
         RouterModule.forRoot([
             {
-                path: 'user-registration',
-                component: UserRegistrationComponent
+                path: 'sign-up',
+                component: SignUpComponent
+            },
+            {
+                path: 'login',
+                component: LoginComponent
             },
             {
                 path: 'home',
