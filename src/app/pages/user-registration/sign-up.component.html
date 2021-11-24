@@ -1,42 +1,38 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <!--
-      fullName: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(80)]],
-      email: [null],
-      document: [null],
-      birthDate: [null],
-      password: [null, [Validators.pattern("/^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%&*()+\-.,;?^.,;?><:{}[\]])[\w!@#$%&*()+\-.,;?^.,;?><:{}[\]]{6,22}$/"), Validators.required, Validators.minLength(6), Validators.maxLength(22)]],
-      confirmPassword: [null],
-    -->
-
     <!-- Name Field -->
     <div class="field-group">
         <label for="fullName">Nome Completo</label>
         <input type="text"id="fullName" placeholder="Nome completo" formControlName="fullName">
+        <app-error-message [label]="'Nome completo'" [control]="getFieldControl('fullName')"></app-error-message>
     </div>
 
     <!-- Email Field -->
     <div class="field-group">
         <label for="email">Email</label>
         <input type="email" id="email" placeholder="Email" formControlName="email">
+        <app-error-message [label]="'Email'" [control]="getFieldControl('email')"></app-error-message>
     </div>
 
     <!-- Birth Date -->
     <div class="field-group">
         <label for="birthDate">Data de nascimento</label>
         <input type="date" id="email" formControlName="birthDate">
+        <app-error-message [label]="'Data de nascimento'" [control]="getFieldControl('birthDate')"></app-error-message>
     </div>
 
     <!-- Password Field -->
     <div class="field-group">
-        <label for="password"></label>
-        <input type="text" id="password" placeholder="Senha" formControlName="password">
+        <label for="password">Senha</label>
+        <input type="password" id="password" placeholder="Senha" formControlName="password">
+        <app-error-message [label]="'Senha'" [control]="getFieldControl('password')"></app-error-message>
     </div>
 
     <!-- Confirm Password Field -->
     <div class="field-group">
-        <label for="confirmPassword"></label>
-        <input type="text" id="confirmPassword" placeholder="Confirmação de senha" formControlName="confirmPassword">
+        <label for="confirmPassword">Confirmação de senha</label>
+        <input type="password" id="confirmPassword" placeholder="Confirmação de senha" formControlName="confirmPassword">
+        <app-error-message [label]="'Confirmação de senha'" [control]="getFieldControl('confirmPassword')"></app-error-message>
     </div>
 
-    <input type="button" value="Cadastrar" (click)="register()">
+    <input type="button" value="Cadastrar">
 </form>
