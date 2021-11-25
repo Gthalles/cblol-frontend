@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
+import { FormValidationService } from 'src/app/shared/services/form-validation.service';
+
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
@@ -9,16 +11,19 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class SignUpComponent implements OnInit {
   form!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private formValidationService: FormValidationService
+    ) { }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       fullName: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(80)]],
-      email: [null, [Validators.pattern("/^(\S+)@((?:(?:(?!-)[a-zA-Z0-9-]{1,62}[a-zA-Z0-9])\.)+[a-zA-Z0-9]{2,12})$/")]],
-      document: [null],
-      birthDate: [null],
-      password: [null, [Validators.pattern("^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%&*()+\-.,;?^.,;?><:{}[\]])[\w!@#$%&*()+\-.,;?^.,;?><:{}[\]]{6,22}$"), Validators.required, Validators.minLength(6), Validators.maxLength(22)]],
-      confirmPassword: [null],
+      email: [null, [Validators.maxLength(120), this.formValidationService.emailValidator]],
+      document: [null, [Validators.required]],
+      birthDate: [null, [Validators.required]],
+      password: [null, [Validators.required, Validators.minLength(6), Validators.maxLength(22), this.formValidationService.passwordValidator]],
+      confirmPassword: [null, [Validators.required, this.formValidationService.equalsTo('password')]],
     });
   }
 
@@ -26,5 +31,9 @@ export class SignUpComponent implements OnInit {
 
   register() {
     console.log(this.form);
+  }
+
+  getFieldControl(fieldName: string): any {
+    return this.form.get(fieldName);
   }
 }
