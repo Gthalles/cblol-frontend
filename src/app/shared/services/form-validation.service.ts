@@ -6,32 +6,32 @@ export class FormValidationService {
 
   constructor() { }
 
-  passwordValidator(control: FormControl): any {
-    var password: string = control.value;
+  validatePassword(control: FormControl): any {
+    let password: string = control.value;
 
     if(password && password != '') {
-      // Regex para validar senha
-      var validatePassword = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%&*()+\-.,;?^.,;?><:{}[\]])[\w!@#$%&*()+\-.,;?^.,;?><:{}[\]]{6,22}$/;
-      return validatePassword.test(password) ? null : { invalidPassword: true };
+      var passwordValidator = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%&*()+\-.,;?^.,;?><:{}[\]])[\w!@#$%&*()+\-.,;?^.,;?><:{}[\]]{6,22}$/; // Regex para validar senha
+      
+      return passwordValidator.test(password) ? null : { invalidPassword: true };
     }
   }
 
-  emailValidator(control: FormControl): any {
-    var email: string = control.value;
+  validateEmail(control: FormControl): any {
+    let email: string = control.value;
 
     if(email && email != '') {
-      // Regex para validar email
-      var validateEmail = /^(\S+)@((?:(?:(?!-)[a-zA-Z0-9-]{1,62}[a-zA-Z0-9])\.)+[a-zA-Z0-9]{2,12})$/;
-      return validateEmail.test(email) ? null : { invalidEmail: true };
+      var emailValidator= /^(\S+)@((?:(?:(?!-)[a-zA-Z0-9-]{1,62}[a-zA-Z0-9])\.)+[a-zA-Z0-9]{2,12})$/; // Regex para validar email
+
+      return emailValidator.test(email) ? null : { invalidEmail: true };
     }
   }
 
   validateCPF(control: FormControl): any {
-    var cpf: string = control.value;
+    let cpf: string = control.value;
 
     if(cpf && cpf != '') {
-      // Regex para validar CPF
-      var documentValidator = /\d{3}\.\d{3}\.\d{3}-\d{2}$/;
+      var documentValidator = /\d{3}\.\d{3}\.\d{3}-\d{2}$/; //Regex para validar CPF
+
       return documentValidator.test(cpf) ? null : { invalidCPF: true };
     }
   }
