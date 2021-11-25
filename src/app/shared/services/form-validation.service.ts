@@ -26,6 +26,16 @@ export class FormValidationService {
     }
   }
 
+  validateCPF(control: FormControl): any {
+    var cpf: string = control.value;
+
+    if(cpf && cpf != '') {
+      // Regex para validar CPF
+      var documentValidator = /\d{3}\.\d{3}\.\d{3}-\d{2}$/;
+      return documentValidator.test(cpf) ? null : { invalidCPF: true };
+    }
+  }
+
   equalsTo(otherField: string): any {
     const validator: any = (formControl: FormControl) => {
       if (otherField == null) {
@@ -61,6 +71,7 @@ export class FormValidationService {
       'minlength': `${fieldName} precisa ter no mínimo ${validatorValue.requiredLength} caracteres.`,
       'maxlength': `${fieldName} precisa ter no máximo ${validatorValue.requiredLength} caracteres.`,
       'invalidEmail': `${fieldName} inválido.`,
+      'invalidCPF': `${fieldName} inválido.`,
       'invalidPassword': `${fieldName} inválida.`
     };
 
