@@ -2,7 +2,7 @@
     <!-- Name Field -->
     <div class="field-group">
         <label for="fullName">Nome Completo</label>
-        <input type="text"id="fullName" placeholder="Nome completo" formControlName="fullName">
+        <input type="text" id="fullName" placeholder="Nome completo" formControlName="fullName">
         <app-error-message [label]="'Nome completo'" [control]="getFieldControl('fullName')"></app-error-message>
     </div>
 
@@ -13,10 +13,17 @@
         <app-error-message [label]="'Email'" [control]="getFieldControl('email')"></app-error-message>
     </div>
 
+    <!-- Document Field -->
+    <div class="field-group">
+        <label for="document">CPF</label>
+        <input type="text" id="document" placeholder="CPF" formControlName="document">
+        <app-error-message [label]="'CPF'" [control]="getFieldControl('document')"></app-error-message>
+    </div>
+
     <!-- Birth Date -->
     <div class="field-group">
         <label for="birthDate">Data de nascimento</label>
-        <input type="date" id="email" formControlName="birthDate">
+        <input type="date" id="birthDate" formControlName="birthDate">
         <app-error-message [label]="'Data de nascimento'" [control]="getFieldControl('birthDate')"></app-error-message>
     </div>
 
