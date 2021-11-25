@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 
 import { FormValidationService } from 'src/app/shared/services/form-validation.service';
 
@@ -13,24 +13,22 @@ export class SignUpComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private formValidationService: FormValidationService
+    private validationService: FormValidationService
     ) { }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       fullName: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(80)]],
-      email: [null, [Validators.required, Validators.maxLength(120), this.formValidationService.validateEmail]],
-      document: [null, [Validators.required, this.formValidationService.validateCPF]],
+      email: [null, [Validators.required, Validators.maxLength(120), this.validationService.validateEmail]],
+      document: [null, [Validators.required, this.validationService.validateCPF]],
       birthDate: [null, [Validators.required]],
-      password: [null, [Validators.required, Validators.minLength(6), Validators.maxLength(22), this.formValidationService.validatePassword]],
-      confirmPassword: [null, [Validators.required, this.formValidationService.equalsTo('password')]],
+      password: [null, [Validators.required, Validators.minLength(6), Validators.maxLength(22), this.validationService.validatePassword]],
+      confirmPassword: [null, [Validators.required, this.validationService.equalsTo('password')]],
     });
   }
 
-  onSubmit() {}
-
-  register() {
-    console.log(this.form);
+  onSubmit(ngForm: any) {
+    console.log('Submitted: ', ngForm);
   }
 
   getFieldControl(fieldName: string): any {

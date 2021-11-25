@@ -1,4 +1,4 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
+<form #ngForm="ngForm" [formGroup]="form" (ngSubmit)="onSubmit(ngForm)">
     <!-- Name Field -->
     <div class="field-group">
         <label for="fullName">Nome Completo</label>
@@ -41,5 +41,5 @@
         <app-error-message [label]="'Confirmação de senha'" [control]="getFieldControl('confirmPassword')"></app-error-message>
     </div>
 
-    <input type="button" value="Cadastrar">
+    <button type="submit" [disabled]="form.invalid || ngForm.submitted">Cadastrar</button>
 </form>
