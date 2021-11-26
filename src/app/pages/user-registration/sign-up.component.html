@@ -16,7 +16,7 @@
     <!-- Document Field -->
     <div class="field-group">
         <label for="document">CPF</label>
-        <input type="text" id="document" placeholder="CPF" formControlName="document">
+        <input type="text" id="document" placeholder="CPF" mask="000.000.000-00" formControlName="document">
         <app-error-message [label]="'CPF'" [control]="getFieldControl('document')"></app-error-message>
     </div>
 
