@@ -30,7 +30,7 @@ export class FormValidationService {
     let cpf: string = control.value;
 
     if(cpf && cpf != '') {
-      var documentValidator = /\d{3}\.\d{3}\.\d{3}-\d{2}$/; //Regex para validar CPF
+      var documentValidator = /\d{3}\d{3}\d{3}\d{2}$/; //Regex adaptado para validar CPF utilizando ngMask
 
       return documentValidator.test(cpf) ? null : { invalidCPF: true };
     }
