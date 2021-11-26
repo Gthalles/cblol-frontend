@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { delay, map, tap } from 'rxjs/operators';
 
 @Injectable()
 export class FormValidationService {
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) { }
 
   validatePassword(control: FormControl): any {
     let password: string = control.value;
@@ -60,6 +62,18 @@ export class FormValidationService {
     };
 
     return validator;
+  }
+
+  getExistingEmails(email: string): any {
+
+    return this.httpClient.get('assets/email.json').pipe(
+      delay(2500),
+      map((data: any) => data.emails),
+      
+      map((data: { email: string } []) => data.filter(v => v.email === email)),
+
+      map((data: any[]) => data.length > 0),
+    );
   }
 
   getErrorMessage(fieldName: string, validatorName: string, validatorValue?: any) {
