@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Form, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { FormValidationService } from 'src/app/shared/services/form-validation.service';
+import { UserService } from 'src/app/shared/user.service';
 
 @Component({
     selector: 'app-sign-up',
@@ -15,7 +16,8 @@ export class SignUpComponent implements OnInit
     // eslint-disable-next-line no-useless-constructor
     constructor (
     private formBuilder: FormBuilder,
-    private validationService: FormValidationService
+    private validationService: FormValidationService,
+    private userService: UserService,
     )
     // eslint-disable-next-line no-empty-function
     { }
@@ -23,7 +25,7 @@ export class SignUpComponent implements OnInit
     ngOnInit (): void
     {
         this.form = this.formBuilder.group({
-            fullName: [
+            fullname: [
                 null,
                 [
                     Validators.required,
@@ -77,5 +79,10 @@ export class SignUpComponent implements OnInit
     getFieldControl (fieldName: string): any
     {
         return this.form.get(fieldName);
+    }
+
+    register (newUser: any)
+    {
+        this.userService.createUser(newUser);
     }
 }
