@@ -1,1 +1,26 @@
-<p>login works!</p>
+<div class="container">
+    <section>
+        <h1>Iniciar sessão</h1>
+        <img src="/assets/logo.png" alt="Logo do CBLoL Events">
+
+        <form #ngForm="ngForm" [formGroup]="loginForm">
+            <!-- Email Field -->
+            <div class="field-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="seu_email@exemplo.com" formControlName="email">
+                <app-error-message [label]="'Email'" [control]="getFieldControl('email')"></app-error-message>
+            </div>
+
+            <!-- Password Field -->
+            <div class="field-group">
+                <label for="password">Senha</label>
+                <input type="password" id="password" placeholder="Insira sua senha" formControlName="password">
+                <app-error-message [label]="'Senha'" [control]="getFieldControl('password')"></app-error-message>
+            </div>
+
+            <button type="submit" [disabled]="loginForm.invalid || ngForm.submitted" (click)="login(this.loginForm.value)">Entrar</button>
+            <p>Esqueceu a sua senha? <a href="login">Clique aqui</a></p>
+            <p>Não possui uma conta? <a href="sign-up">Cadastre-se</a></p>
+        </form>
+    </section>
+</div>

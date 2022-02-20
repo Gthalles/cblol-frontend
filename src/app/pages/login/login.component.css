@@ -1,0 +1,92 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    height: 100vh;
+    background-position-y: -20px;
+    background-image: url('src/assets/login-background.png');
+    background-size: cover;
+    display: flex;
+    align-items: center;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30vw;
+    height: 80vh;
+    margin: auto;
+    background-color: #ffffff;
+    border-radius: 20px;
+}
+
+section h1 {
+    font-size: 48px;
+    margin-top: 25px;
+    line-height: 60px;
+    letter-spacing: 0.135em;
+    text-align: center;
+    color: #353535;
+}
+
+section img {
+    margin-bottom: 30px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.field-group {
+    display: flex;
+    flex-direction: column;
+    margin: 8px 0;
+}
+
+.field-group label {
+    text-indent: 15px;
+    font-size: 12px;
+    line-height: 16px;
+    color: #353535;
+}
+
+.field-group input {
+    width: 200px;
+    height: 30px;
+    border-radius: 5px;
+    color: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(117, 109, 109, 0.479);
+}
+
+.field-group input::placeholder {
+    color:rgba(112, 89, 89, 0.493);
+    text-indent: 15px;
+}
+
+button {
+    width: 200px;
+    height: 35px;
+    margin: 25px auto 20px auto;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+    background: #0BC4E2;
+    color: #ffffff;
+}
+
+form p {
+    font-size: 12px;
+    line-height: 16px;
+    color: #353535;
+    margin: 10px 0;
+    letter-spacing: 0.07em;
+}
+
+form a {
+    color: #353535;
+}
